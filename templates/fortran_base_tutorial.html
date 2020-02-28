@@ -1,6 +1,14 @@
 {% extends "layout.html" %}
-{% block content %}
+
 <% block header %>
-super()
+{{super()}}
+Tutorial witll only be shown here <br>
+<p>
+    This should also be shown should it not?
+</p>
 <% endblock %>
+
+{% block content %}
+{{super()}}
+"TESTETETE"
 {% endblock %}
