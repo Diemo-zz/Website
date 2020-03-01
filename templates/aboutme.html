@@ -1,5 +1,8 @@
 {% extends "layout.html" %}
-{% block content %}
+{% block header %}
+ {{super()}}
+{% endblock %}
+{% block body %}
 My name is Diarmaid de Burca, and I am a software developer who specialises in Python. This application was designed
 to show people that I can successfully run an application here. This application is written in python3, using the
 starlette (ASGI) app framework and Jinja2 templates to render the HTML itself.

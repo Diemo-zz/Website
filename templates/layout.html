@@ -1,24 +1,18 @@
 <!DOCTYPE html>
-{% from "macros.html" import nav_link with context %}.
+
 <html>
   <head>
-    <title>Flask Template Example</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <style type="text/css">
-      .container {
-        max-width: 500px;
-        padding-top: 100px;
-      }
-      h2 {color: red;}
-    </style>
-  </head>
-  <body>
-  </body>
  {% block header %}
-  This will be shown everywhere!
+      <div class="topnav">
+  <a class="active" href="index">Home</a>
+  <a href="runfortran">Run Fortran</a>
+  <a href="about_me">About</a>
+</div>
   {% endblock %}
+  </head>
 
-  {% block content %}
+  <body>
+  {% block body %}
   {% endblock %}
+  </body>
 </html>

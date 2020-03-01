@@ -1,10 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
- <head>
-  <meta charset="UTF-8">
-  <title>My Page</title>
- </head>
- <body>
+{% extends "layout.html" %}
+  {% block header %}
+    <title>Input Fortran Code</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <style type="text/css">
+      .container {
+        max-width: 500px;
+        padding-top: 100px;
+      }
+      h2 {color: red;}
+    </style>
+    {{super()}}
+  {% endblock %}
+
+  {% block body %}
+  {{ super() }}
   <form method="POST" action="/show_fortran_results">
    Program Name: <input type="text" name="pname"><br>
    <style>
@@ -13,5 +23,5 @@
    Program Code: <textarea name="code" rows=20, cols=20>{{code}}</textarea><br>
    <input type="submit" value="Submit">
   </form>
- </body>
-</html>
+  {% endblock %}
+
