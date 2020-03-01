@@ -27,7 +27,9 @@ async def input_fortran_code(request):
         name = unquote(name)
     if code:
         code = unquote(code)
-    return templates.TemplateResponse("input_fortran_code.html", {"request": request, "name": name, "code": code},)
+    return templates.TemplateResponse(
+        "input_fortran_code.html", {"request": request, "name": name, "code": code},
+    )
 
 
 async def show_fortran_results(request):
@@ -40,8 +42,18 @@ async def show_fortran_results(request):
     if code:
         code = unquote(code)
     else:
-        return templates.TemplateResponse("input_fortran_code.html", {"request": request, "name": name, "code": code})
-    results = get_fortran_code_result(code_in = code)
+        return templates.TemplateResponse(
+            "input_fortran_code.html", {"request": request, "name": name, "code": code}
+        )
+    results, errors = get_fortran_code_result(code_in=code)
     quoted_code = quote(code)
-    return templates.TemplateResponse("show-fortran-results.html", {"request": request, "code": code, "quoted_code":
-        quoted_code})
+    return templates.TemplateResponse(
+        "show-fortran-results.html",
+        {
+            "request": request,
+            "code": code,
+            "quoted_code": quoted_code,
+            "results": results,
+            "errors": errors,
+        },
+    )
