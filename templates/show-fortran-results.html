@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Show Fortran Results</title>
-</head>
-<body>
-
+{% extends "layout.html" %}
+{% set active_page = 'runfortran' %}
+  {% block header %}
+    {{ super() }}
+ {% endblock %}
+{% block body %}
 <h1>Show Fortran Results</h1>
 
 <p>This page will display the results of running the fortran code. We probably want to have this first try to compile
@@ -22,5 +20,4 @@ the fortran code, and if that succeeds, it tries to run the code instead.</p>
    <input type="hidden" value={{quoted_code}} name="code">
    <input type="submit" value="Return to code input">
   </form>
-</body>
-</html>
+{% endblock %}

@@ -1,12 +1,17 @@
 {% extends "layout.html" %}
+{% set active_page = 'aboutme' %}
 {% block header %}
- {{super()}}
+<title>About Me</title>
+{{super()}}
 {% endblock %}
-{% block body %}
-My name is Diarmaid de Burca, and I am a software developer who specialises in Python. This application was designed
-to show people that I can successfully run an application here. This application is written in python3, using the
-starlette (ASGI) app framework and Jinja2 templates to render the HTML itself.
 
+{% block body %}
+{{ super() }}
+<p>
+    My name is Diarmaid de Burca, and I am a software developer who specialises in Python. This application was designed
+    to show people that I can successfully run an application here. This application is written in python3, using the
+    starlette (ASGI) app framework and Jinja2 templates to render the HTML itself.
+</p>
 <p>
     This is a second paragraph about what I do
 </p>
@@ -16,5 +21,5 @@ starlette (ASGI) app framework and Jinja2 templates to render the HTML itself.
     This is Two
     This is Three
 </code>
-
 {% endblock %}
+

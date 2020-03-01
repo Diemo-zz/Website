@@ -1,13 +1,42 @@
 <!DOCTYPE html>
-
+{% set active_page = active_page | default('layout') %}
 <html>
+<style>
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+
+
   <head>
- {% block header %}
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
       <div class="topnav">
-  <a class="active" href="index">Home</a>
-  <a href="runfortran">Run Fortran</a>
-  <a href="about_me">About</a>
-</div>
+          <a class="{{'active' if active_page == 'index' }}" href="index">Home</a>
+          <a class="{{'active' if active_page == 'runfortran' }}" href="runfortran">Run Fortran</a>
+          <a class="{{'active' if active_page == 'aboutme' }}" href="about_me">About</a>
+      </div>
+ {% block header %}
   {% endblock %}
   </head>
 

@@ -1,8 +1,8 @@
 {% extends "layout.html" %}
+ {% set active_page = 'index' %}
   {% block header %}
     <title>Diarmaid's Index Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <style type="text/css">
       .container {
         max-width: 500px;
@@ -11,6 +11,8 @@
       h2 {color: red;}
     </style>
     {{super()}}
+
+    {{ active_page }}
   {% endblock %}
 
   {% block body %}
