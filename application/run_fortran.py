@@ -2,33 +2,50 @@ from subprocess import check_output, CalledProcessError, PIPE
 import subprocess
 
 
+
 def compile_fortran_code(code_in):
     with open("test.f90", "w") as f:
         f.writelines(code_in)
+    name = "test.a"
     try:
         res = check_output(
-            ["gfortran", "-o", "test.a", "test.f90"],
+            ["gfortran", "test.f90"],
             stderr=subprocess.STDOUT,
             stdin=PIPE,
         )
-    except CalledProcessError as pe:
-        pass
-        # print("BEFORE")
-        # print(pe.output)
-        # print(pe.args)
-        # print(pe)
-        # print(pe.stdout)
-        # print(pe.stderr)
-        # print(pe.stderr)
-        # print("AFTER")
+    except Exception as e:
+        res = {}
+    return res, {}
 
 
 def run_fortran_code(name_in):
-    pass
+    try:
+        res = check_output(
+            ["./a.out"],
+            stderr=subprocess.STDOUT,
+            stdin=PIPE,
+        )
+    except Exception as e:
+        res = {}
+    return res, {}
+
 
 
 def clean_up_fortran_code(name_in):
     pass
+
+
+def get_fortran_code_result(code_in):
+    try:
+        program_name = compile_fortran_code(code_in)
+    except CalledProcessError as pe:
+        result = pe.output, pe.returncode
+        return result, {}
+
+    res2 = run_fortran_code("a.out")
+    print(res2)
+    clean_up_fortran_code("a.out")
+    return {}, {}
 
 
 if __name__ == "__main__":
@@ -39,6 +56,4 @@ a = 10
 write(*,*) a
 end program main
 	"""
-    program_name = compile_fortran_code(program)
-    results = run_fortran_code(program_name)
-    clean_up_fortran_code(program_name)
+    res, val = get_fortran_code_result(program)

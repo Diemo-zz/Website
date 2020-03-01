@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>My Page</title>
+ </head>
+ <body>
+  <form method="POST" action="/show_fortran_results">
+   Program Name: <input type="text" name="pname"><br>
+   <style>
+       code {height:200px; font-size:14pt;}
+   </style>
+   Program Code: <textarea name="code" rows=20, cols=20>{{code}}</textarea><br>
+   <input type="submit" value="Submit">
+  </form>
+ </body>
+</html>
