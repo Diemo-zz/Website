@@ -14,7 +14,10 @@ async def server_error(request, exc):
 
 
 async def four_oh_four_not_found(request, exc):
-    return templates.TemplateResponse("404_not_found.html", {"request": request, "code": exc})
+
+    return templates.TemplateResponse("NotFound/404_not_found.html", {"request": request, "code": exc,
+                                                                      "url": request.url, "return_page": "/index",
+                                                                      "return_message": "Return to index page?"})
 
 
 async def four_oh_five_not_found(request, exc):

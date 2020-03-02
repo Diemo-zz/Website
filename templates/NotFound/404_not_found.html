@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% set active_page = '404' %}
+{% block header %}
+<title>404 Not Found</title>
+{{super()}}
+{% endblock %}
+
+{% block body %}
+{{ super() }}
+<img src="/static/404.png" alt="404 not found" />
+
+<p>The page {{url}} that you were looking for is not available. Would you like to return to the index page?</p>
+
+<form method="GET" action="{{return_page}}">
+    <input type="submit" value="{{return_message}}">
+</form>
+{% endblock %}
