@@ -10,6 +10,9 @@ async def index_page(request):
     )
 
 
+async def test_endpoint(request):
+    return templates.TemplateResponse("test.html", {"request": request})
+
 async def about_me(request):
     return templates.TemplateResponse("aboutme.html", {"request": request})
 

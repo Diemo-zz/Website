@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 {% set active_page = active_page | default('layout') %}
 <html>
-<style>
+
+
+<head>
+
+    <style>
 .topnav {
   overflow: hidden;
   background-color: #333;
@@ -13,7 +17,7 @@
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 20px;
 }
 
 .topnav a:hover {
@@ -25,23 +29,19 @@
   background-color: #4CAF50;
   color: white;
 }
-</style>
 
+    </style>
+    <div class="topnav">
+        <a class="{{'active' if active_page == 'index' }}" href="index">Home</a>
+        <a class="{{'active' if active_page == 'runfortran' }}" href="runfortran">Run Fortran</a>
+        <a class="{{'active' if active_page == 'aboutme' }}" href="about_me">About</a>
+    </div>
+    {% block header %}
+    {% endblock %}
+</head>
 
-  <head>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
-      <div class="topnav">
-          <a class="{{'active' if active_page == 'index' }}" href="index">Home</a>
-          <a class="{{'active' if active_page == 'runfortran' }}" href="runfortran">Run Fortran</a>
-          <a class="{{'active' if active_page == 'aboutme' }}" href="about_me">About</a>
-      </div>
- {% block header %}
-  {% endblock %}
-  </head>
-
-  <body>
-  {% block body %}
-  {% endblock %}
-  </body>
+<body>
+{% block body %}
+{% endblock %}
+</body>
 </html>

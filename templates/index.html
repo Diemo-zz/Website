@@ -2,19 +2,37 @@
  {% set active_page = 'index' %}
   {% block header %}
     <title>Diarmaid's Index Page</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style type="text/css">
-      .container {
-        max-width: 500px;
-        padding-top: 100px;
-      }
-      h2 {color: red;}
-    </style>
     {{super()}}
 
-    {{ active_page }}
   {% endblock %}
 
   {% block body %}
-  Index page goes here
+<style>
+    .indexdiv {
+    margin: 20px;
+    }
+
+    .indexdiv:h1 {color:red;}
+</style>
+<div class="indexdiv">
+    <h1>Welcome</h1>
+
+<p>Welcome to my site. You can see a little bit about me on the about page, if you want to learn a bit more about me.
+</p>
+
+<p>I made this site because I wanted to have somewhere where I can keep all of the various things that I have learnt
+about how to make site.</p>
+
+<p>I also want to make a tutorial to teach people Fortran.   I know that there are is not a lot of help for Fortran
+    learners out there, and a lot of what is available is focused on more advanced users - so I thought that a
+    basica Fortran tutorial would be helpful.</p>
+
+<p>I didn't just want to write an ordinary tutorial though, I wanted to be able to compile and run Fortran code on
+    the fly.   Of course, this means that you have to sandbox the Fortran environment.</p>
+
+<p>As this is still very much a work in progress, this sandboxing has not yet occurred. But I know what needs to be
+    done.</p>
+
+<p>Once the Fortran tutorials are completed, the pages to link to them will be listed here.</p>
+    </div>
   {% endblock %}

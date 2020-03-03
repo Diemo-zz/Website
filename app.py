@@ -9,6 +9,7 @@ from application.pages import (
     fortran_tutorial_one,
     input_fortran_code,
     show_fortran_results,
+	test_endpoint,
 )
 from application.error_pages import (
     four_oh_four_not_found,
@@ -31,6 +32,7 @@ exception_handlers = {
 routes = [
     Route("/index", endpoint=index_page),
     Route("/about_me", endpoint=about_me),
+	Route("/test", endpoint = test_endpoint),
     # Route("/fortran1", endpoint = fortran_tutorial_one),
     Route("/runfortran", endpoint=input_fortran_code, methods=["GET", "POST"]),
     Route("/show_fortran_results", endpoint=show_fortran_results, methods=["POST"]),
