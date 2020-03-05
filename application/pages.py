@@ -60,3 +60,7 @@ async def show_fortran_results(request):
             "errors": errors,
         },
     )
+
+async def get_test_update(request):
+    text = request.query_params.get("text", "")
+    return templates.TemplateResponse("test_update.html", {"request": request, "temp": text})
