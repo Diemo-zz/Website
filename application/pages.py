@@ -46,7 +46,7 @@ async def show_fortran_results(request):
         code = unquote(code)
     else:
         return templates.TemplateResponse(
-            "input_fortran_code.html", {"request": request, "name": name, "code": code}
+            "show-fortran-results.html", {"request": request, "name": name, "code": "", "errors": None}
         )
     results, errors = get_fortran_code_result(code_in=code)
     quoted_code = quote(code)

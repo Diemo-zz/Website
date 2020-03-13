@@ -3,18 +3,9 @@
 <head>
      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
      <script type="text/javascript">
-       function test() {
-            var r = $('<input/>').attr({
-                         type: "button",
-                         id: "field",
-                         value: "New Button",
-                         onclick: "newButtonClickListener()"
-                    });
-
-            $("body").append(r);
-         }
         function newButtonClickListener() {
-                $.ajax({url: "http://localhost:8004/test",
+                var origin = window.location.origin + "/test";
+                $.ajax({url: origin,
                 type: "GET",
                                                             dataType: 'html',
                                                             success: function(result){
@@ -27,7 +18,7 @@
      </script>
 </head>
 <body>
-     <button onclick="test()">Insert after</button><br/>
+     <button onclick="newButtonClickListener()">Insert after</button><br/>
 
 <div class="replace_me">
      text

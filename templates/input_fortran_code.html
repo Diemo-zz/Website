@@ -3,18 +3,61 @@
   {% block header %}
     <title>Input Fortran Code</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script language="JavaScript" type="text/javascript">
+            function replace_right_div() {
+                var origin = window.location.origin + "/show_fortran_results";
+                var code_input = $("#code").val();
+                console.log("TEST");
+                console.log(code_input);
+                console.log("AFTER");
+                $.ajax({
+                type: "POST",
+                url: origin,
+                data: {code: code_input, pname: "test.f90"},
+                success: function(result){
+                                                                         $( "div.show-code" ).replaceWith
+                                                                         (result);
+                                                                     }
+                });
+        };
+</script>
     {{super()}}
+<style>
+.wrapper {
+  overflow: hidden;
+}
+
+.textarea{
+width:100%;
+overflow: hidden;}
+
+.left {
+  overflow: hidden;
+  background-color: red;
+  float: left;
+  width: 49%;
+}
+.right {
+overflos: hidden;
+background-color: red;
+width: 49%;
+float: right;
+}
+
+</style>
   {% endblock %}
 
   {% block body %}
+
   {{ super() }}
-  <form method="POST" action="/show_fortran_results">
-   Program Name: <input type="text" name="pname"><br>
-   <style>
-       code {height:200px; font-size:14pt;}
-   </style>
-   Program Code: <textarea name="code" rows=20, cols=20>{{code}}</textarea><br>
-   <input type="submit" value="Submit">
-  </form>
+<div class="wrapper">
+    <div class="left">
+        <textarea name="code" id="code" rows=20, cols="20">{{code}}</textarea>
+        <button name="submit" onclick="replace_right_div()">Test Button</button>
+    </div>
+    <div class="show-code"> Right side div</div>
+</div>
+
   {% endblock %}
 
