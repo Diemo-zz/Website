@@ -8,9 +8,6 @@
             function replace_right_div() {
                 var origin = window.location.origin + "/show_fortran_results";
                 var code_input = $("#code").val();
-                console.log("TEST");
-                console.log(code_input);
-                console.log("AFTER");
                 $.ajax({
                 type: "POST",
                 url: origin,
@@ -22,15 +19,44 @@
                 });
         };
 </script>
+<script src="https://rawgit.com/jackmoore/autosize/master/dist/autosize.min.js"></script>
+
+<script>
+    function auto_grow(element) {
+    element.style.height = "5px";
+    element.style.height = (element.scrollHeight)+"px";
+}
+function getBrowserSize() {
+    var div = document.createElement('div');
+    div.style.position = 'absolute';
+    div.style.top = 0;
+    div.style.left = 0;
+    div.style.width = '100%';
+    div.style.height = '100%';
+    document.documentElement.appendChild(div);
+    var results = {
+        width: div.offsetWidth,
+        height: div.offsetHeight
+    };
+    div.parentNode.removeChild(div); // remove the `div`
+    console.log(results)
+    return results;
+}
+</script>
     {{super()}}
 <style>
 .wrapper {
   overflow: hidden;
 }
 
-.textarea{
-width:100%;
-overflow: hidden;}
+.show-code {
+overflow: hidden;
+background-color: blue;}
+
+.textarea {
+width: 100%;
+overflow: hidden;
+}
 
 .left {
   overflow: hidden;
@@ -53,8 +79,8 @@ float: right;
   {{ super() }}
 <div class="wrapper">
     <div class="left">
-        <textarea name="code" id="code" rows=20, cols="20">{{code}}</textarea>
-        <button name="submit" onclick="replace_right_div()">Test Button</button>
+        <textarea name="code" id="code" oninput="auto_grow(this)">{{code}}</textarea>
+        <button name="submit" onclick="replace_right_div()" style="float:right width:100%">Test Button</button>
     </div>
     <div class="show-code"> Right side div</div>
 </div>
