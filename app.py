@@ -20,6 +20,10 @@ from application.error_pages import (
 
 
 def start_up():
+	"""
+	Well here we go again
+	:return: None
+	""""""
     pass
 
 
@@ -28,7 +32,6 @@ exception_handlers = {
     405: four_oh_five_not_found,
     500: server_error,
 }
-
 
 routes = [
     Route("/index", endpoint=index_page),
